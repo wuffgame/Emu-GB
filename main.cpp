@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Size of ROM: " << rom.size() << " bytes\n";
 
     std::cout << "Title: ";
-    for (int i = 0x134; i <= 0x143; i++) {
+    for (int i = 0x134; i <= 0x142; i++) {
         if (rom[i] != 0) std::cout << (char)rom[i];
     }
     std::cout << "\n";
