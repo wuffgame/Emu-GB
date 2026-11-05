@@ -2,10 +2,11 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include "cpu.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        std::cout << "Usage: " << argv[0] << " file.gb\n";
+        std::cout << "Usage: " << argv[0] << " hello-world.gb\n";
         return 1;
     }
 
@@ -26,5 +27,14 @@ int main(int argc, char* argv[]) {
     std::cout << "\n";
 
     std::cout << "Cartridge type: 0x" << std::hex << (int)rom[0x147] << "\n";
+
+    Memory mem;
+    mem.loadRom(rom);
+    Cpu cpu(mem);
+
+    while (true) {
+        cpu.step();
+    }
+
     return 0;
 }
